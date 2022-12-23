@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-int SEED = 12263149;
+int SEED = 1111;
 string WEATHER_DATA = File.ReadAllText("weather.json");
 Random random = new Random(SEED);
 dynamic weather_data = JsonConvert.DeserializeObject(WEATHER_DATA);
@@ -32,6 +32,7 @@ Weather populate_weather_object(Weather current_weather_object, int weather_roll
     current_weather_object.roll = weather_data.weather[weather_roll_string].roll;
     current_weather_object.length_dice = weather_data.weather[weather_roll_string].lengthdice;
     current_weather_object.length_dice_count = weather_data.weather[weather_roll_string].lengthcount;
+    current_weather_object.duration = roll(current_weather_object.length_dice_count, current_weather_object.length_dice);
 
     return current_weather_object;
 }
@@ -58,7 +59,7 @@ Weather long_rest()
     return current_weather;
 }
 
-String weather_status()
+string weather_status()
 {
     string weather_status = "Error weather not calculated";
     int roll_result = roll(1, 100);
@@ -108,9 +109,18 @@ Weather next_weather(Weather weather)
     return new_weather;
 }
 
-Weather starting_weather = long_rest();
+void print_weather(Weather weather)
+{
+    Console.WriteLine($"Weather Name: {weather.name}");
+    Console.WriteLine($"Duration: {weather.duration.ToString()} hours");
+    Console.WriteLine("-------------------------");
+}
 
+Weather starting_weather = long_rest();
 Weather another_weather = next_weather(starting_weather);
+
+print_weather(starting_weather);
+print_weather(another_weather);
 
 Console.ReadLine();
 
