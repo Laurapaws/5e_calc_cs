@@ -113,7 +113,16 @@ void print_weather(Weather weather)
 {
     Console.WriteLine($"Weather Name: {weather.name}");
     Console.WriteLine($"Duration: {weather.duration.ToString()} hours");
-    Console.WriteLine("-------------------------");
+    Console.WriteLine("------------");
+
+    foreach (String effect in weather.effects)
+    {
+        Console.WriteLine(effect);
+    }
+    
+    Console.WriteLine();
+    Console.WriteLine("===================================");
+
 }
 
 Weather starting_weather = long_rest();

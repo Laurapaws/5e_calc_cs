@@ -2,7 +2,7 @@
     "weather": {
         "1": {
             "name": "Clear Skies",
-            "effects": ["[No Wind] -50°F", "Dim Natural Light from: Moon / Aurora / Twilight", "Disadvantage on [Sight] Perception Checks."],
+            "effects": ["[No Wind] -50°C", "Dim Natural Light from: Moon / Aurora / Twilight", "Disadvantage on [Sight] Perception Checks."],
             "calming1": "Light Cloud Coverage",
             "calming2": "Overcast",
             "worsening1": "Light Snow Dusting",
