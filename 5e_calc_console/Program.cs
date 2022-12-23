@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-int SEED = 1111;
+int SEED = 111551;
 string WEATHER_DATA = File.ReadAllText("weather.json");
 Random random = new Random(SEED);
 dynamic weather_data = JsonConvert.DeserializeObject(WEATHER_DATA);
@@ -125,11 +125,19 @@ void print_weather(Weather weather)
 
 }
 
-Weather starting_weather = long_rest();
-Weather another_weather = next_weather(starting_weather);
+void weather_sample()
+{
+    Weather starting_weather = long_rest();
+    Weather another_weather = next_weather(starting_weather);
+    Weather another_one = next_weather(another_weather);
 
-print_weather(starting_weather);
-print_weather(another_weather);
+    print_weather(starting_weather);
+    print_weather(another_weather);
+    print_weather(another_one);
+}
+
+
+weather_sample();
 
 Console.ReadLine();
 
