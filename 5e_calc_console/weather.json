@@ -1,136 +1,253 @@
+
+
 {
-    "weather": {
-        "1": {
-            "name": "Clear Skies",
-            "effects": ["[No Wind] -50°C", "Dim Natural Light from: Moon / Aurora / Twilight", "Disadvantage on [Sight] Perception Checks."],
-            "calming1": "Light Cloud Coverage",
-            "calming2": "Overcast",
-            "worsening1": "Light Snow Dusting",
-            "worsening2": "Extreme Fog",
-            "lengthdice": 4,
-            "lengthcount": 2,
-            "roll": 1
-        },
-        "2": {
-            "name": "Light Cloud Coverage",
-            "effects": ["[Mild Wind] -48°C", "Dim Natural Light from: ¾ Moon / Aurora / Twilight", "-Disadvantage on [Sight] Perception Checks."],
-            "calming1": "Clear Skies",
-            "calming2": "Clear Skies",
-            "worsening1": "Overcast",
-            "worsening2": "Light Snow Dusting",
-            "lengthdice": 4,
-            "lengthcount": 1,
-            "roll": 2
-        },
-        "3": {
-            "name": "Overcast",
-            "effects": ["[Moderate Wind] -54°C","- Disadvantage on Ranged Attack Rolls","No Natural Light: [Blinded]","- No [Sight] Perception Checks","- Disadvantage on Attack Rolls"],
-            "calming1": "Light Cloud Coverage",
-            "calming2": "Light Cloud Coverage",
-            "worsening1": "Storm Clouds",
-            "worsening2": "Hail Storm",
-            "lengthdice": 4,
-            "lengthcount": 1,
-            "roll": 3
-        },
-        "4": {
-            "name": "Storm Clouds",
-            "effects": ["[Severe Wind] -62°C","- Disadvantage on Ranged Attack Rolls","- Disadvantage on [Hearing] Perception Checks","No Natural Light: [Blinded]","- No [Sight] Perception Checks","- Disadvantage on Attack Rolls ","Extreme Cold for those without natural cold resistance.","- 1/Hr DC 10 CON Saving Throw: On Fail +1 Exhaustion"],
-            "calming1": "Overcast",
-            "calming2": "Overcast",
-            "worsening1": "Heavy Snowfall",
-            "worsening2": "Lightning Storm",
-            "lengthdice": 4,
-            "lengthcount": 1,
-            "roll": 4
-        },
-        "5": {
-            "name": "Light Snow Dusting",
-            "effects": ["[No Wind] -51°C","Dim Natural Light from: Full Moon / Aurora / Twilight","- Disadvantage on [Sight] Perception Checks"],
-            "calming1": "Light Cloud Coverage",
-            "calming2": "Light Cloud Coverage",
-            "worsening1": "Heavy Snowfall",
-            "worsening2": "Lightning Storm",
-            "lengthdice": 4,
-            "lengthcount": 1,
-            "roll": 5
-        },
-        "6": {
-            "name": "Heavy Snowfall",
-            "effects": ["[Mild Wind] -56°C","No Natural Light: [Blinded]","- No [Sight] Perception Checks ","- Disadvantage on Attack Rolls ","Extreme Cold for those without cold resistance.","- 1/Hr DC 10 CON Saving Throw: Fail +1 Exhaustion "],
-            "calming1": "Overcast",
-            "calming2": "Clear Skies",
-            "worsening1": "Blizzard",
-            "worsening2": "Hail Storm",
-            "lengthdice": 4,
-            "lengthcount": 1,
-            "roll": 6
-        },
-        "7": {
-            "name": "Blizzard",
-            "effects": ["[Moderate Wind] -68°C","- Disadvantage on Ranged Attack Rolls","- Disadvantage on [Hearing] Perception Checks","- - Hearing Range Reduced to 100ft","No Natural Light: [Blinded]","- No [Sight] Perception Checks","- - Characters without goggles are [Blinded] even in lit conditions.","- Disadvantage on Attack Rolls","- Visibility from Unnatural Lights Reduced to 30ft.","Extreme Cold for those with natural cold resistance.","- With Cold Resist: 1/Hr DC 10 CON Saving Throw: Fail +1 Exhaustion ","- 1/Hr DC 15 CON Saving Throw: Fail +1 Exhaustion","Extinguishing Winds: The severe wind makes open flames, fog, tracks in the snow, and non-magical flying impossible","If the party travels during a blizzard:","- Navigator must make a 1/Hr DC 15 Survival check.","- - On Fail 14-10: Party makes no progress toward destination.","- - On Fail 9 or lower: one random untied party member is lost.","- - Group DC 15 Survival Check 1/hr to find the lost member.","On turn end: Concentration Spells require DC 10 CON Saving Throw to maintain."],
-            "calming1": "Storm Clouds",
-            "calming2": "Light Snow Dusting",
-            "worsening1": "Heavy Snowfall",
-            "worsening2": "Wind Vortex",
-            "lengthdice": 4,
-            "lengthcount": 2,
-            "roll": 7
-        },
-        "8": {
-            "name": "White Out",
-            "effects": ["[Moderate Wind] -90°C","- Disadvantage on Ranged Attack Rolls","- Disadvantage on [Hearing] Perception Checks","- - Hearing Range Reduced to 30ft","No Natural Light: [Blinded]","- No [Sight] Perception Checks","- - Characters without goggles are [Blinded] even in lit conditions.","- Disadvantage on Attack Rolls","- Visibility from Unnatural Lights Reduced to 10ft.","Extreme Cold for those without cold resistance.","- 1/Hr DC 10 CON Saving Throw: Fail +1 Exhaustion","Extinguishing Winds: The severe wind makes open flames, fog, tracks in the snow, and non-magical flying impossible","If the party travels during a blizzard:","- Navigator must make a 1/Hr DC 18 Survival check.","- - On Fail 17-15: Party makes no progress toward destination.","- - On Fail 14-10: one random untied party member is lost.","- - On Fail 9 or lower: one random tied party member is lost.","- - Group DC 18 Survival Check 1/hr to find the lost member.","On turn end: Concentration Spells require DC 10 CON Saving Throw to maintain."],
-            "calming1": "Light Snow Dusting",
-            "calming2": "Light Snow Dusting",
-            "worsening1": "Heavy Snowfall",
-            "worsening2": "Blizzard",
-            "lengthdice": 4,
-            "lengthcount": 1,
-            "roll": 8
-        },
-        "9": {
-            "name": "Extreme Fog",
-            "effects": ["[No Wind] -48°C","Dim Natural Light from: Full Moon / Aurora / Twilight","- Disadvantage on [Sight] Perception Checks","- Visibility from Unnatural Lights Reduced to 5ft","If the party travels during the extreme fog:","- Navigator must make a 1/Hr DC 12 Survival check.","- - On Fail 11-8: Party makes no progress toward destination.","- - On Fail 7 or lower: one random untied party member is lost.","- - Group DC 12 Survival Check 1/hr to find the lost member."],
-            "calming1": "Clear Skies",
-            "calming2": "Overcast",
-            "worsening1": "Light Snow Dusting",
-            "worsening2": "Wind Vortex",
-            "lengthdice": 4,
-            "lengthcount": 1,
-            "roll": 9
-        },
-        "10": {
-            "name": "Lightning Storm",
-            "effects": ["[Mild Wind] -51°C","Dim Natural Light from: Rapid Lightning","- Disadvantage on [Sight] Perception Checks","Frightening Lightning / Thunderous Threat:","- 1/Hr Players caught in the open tundra must roll a d100.","- - On 001: The character must make a DC 15 DEX  saving throw. On Fail: 8d8 lightning damage / Half on a success.","- - In addition, each creature within 15ft of the striking point must also make a DC 15 DEX saving throw. On Fail: ½  the full damage. Save: No Damage","- 1/Hr Booming Thunder has a 50% chance to cause an avalanche in the mountains.","- - Disadvantage on [Hearing] Perception Checks"],
-            "calming1": "Storm Clouds",
-            "calming2": "Storm Clouds",
-            "worsening1": "Blizzard",
-            "worsening2": "Heavy Snowfall",
-            "lengthdice": 4,
-            "lengthcount": 2,
-            "roll": 10
-        },
-        "11": {
-            "name": "Hail Storm",
-            "effects": ["[Severe Wind] -62°C","- Disadvantage on Ranged Attack Rolls","- Disadvantage on [Hearing] Perception Checks","No Natural Light: [Blinded]","- No [Sight] Perception Checks ","- Disadvantage on Attack Rolls","Extreme Cold for those without cold resistance.","- 1/Hr DC 10 CON Saving Throw: On Fail +1 Exhaustion","Icey Monstrosity:","- 1/Hr DC 10 DEX Saving Throw: Fail 1d12 Bludgeoning or half on a success."],
-            "calming1": "Overcast",
-            "calming2": "Clear Skies",
-            "worsening1": "Heavy Snowfall",
-            "worsening2": "Blizzard",
-            "lengthdice": 4,
-            "lengthcount": 1,
-            "roll": 11
-        },
-        "12": {
-            "name": "Wind Vortex",
-            "effects": ["[Severe Wind] -79°C","- Disadvantage on Ranged Attack Rolls ","- Disadvantage on [Hearing] Perception Checks","Dim Natural Light from: ½  Moon / Aurora / Twilight","- Disadvantage on [Sight] Perception Checks","Extreme Cold for those with natural cold resistance.","- With Cold Resist: 1/Hr DC 10 CON Saving Throw: Fail +1 Exhaustion","- No Cold Resist: 1/Hr DC 15 CON Saving Throw: Fail +1 Exhaustion.","Extinguishing Winds: The severe wind makes open flames, fog, tracks in the snow, and non-magical flying impossible."],
-            "calming1": "Clear Skies",
-            "calming2": "Clear Skies",
-            "worsening1": "Clear Skies",
-            "worsening2": "Clear Skies",
-            "lengthdice": 4,
-            "lengthcount": 1,
-            "roll": 12
-        }
-    }
-}
+    "weather": [
+      {
+        "name": "Clear Skies",
+        "effects": [
+          "[No Wind] -50°C",
+          "Dim Natural Light from: Moon / Aurora / Twilight",
+          "Disadvantage on [Sight] Perception Checks."
+        ],
+        "calming1": "Light Cloud Coverage",
+        "calming2": "Overcast",
+        "worsening1": "Light Snow Dusting",
+        "worsening2": "Extreme Fog",
+        "lengthdice": 4,
+        "lengthcount": 2,
+        "roll": 1
+      },
+      {
+        "name": "Light Cloud Coverage",
+        "effects": [
+          "[Mild Wind] -48°C",
+          "Dim Natural Light from: Moon / Aurora / Twilight",
+          "-Disadvantage on [Sight] Perception Checks."
+        ],
+        "calming1": "Clear Skies",
+        "calming2": "Clear Skies",
+        "worsening1": "Overcast",
+        "worsening2": "Light Snow Dusting",
+        "lengthdice": 4,
+        "lengthcount": 1,
+        "roll": 2
+      },
+      {
+        "name": "Overcast",
+        "effects": [
+          "[Moderate Wind] -54°C",
+          "- Disadvantage on Ranged Attack Rolls",
+          "No Natural Light: [Blinded]",
+          "- No [Sight] Perception Checks",
+          "- Disadvantage on Attack Rolls"
+        ],
+        "calming1": "Light Cloud Coverage",
+        "calming2": "Light Cloud Coverage",
+        "worsening1": "Storm Clouds",
+        "worsening2": "Hail Storm",
+        "lengthdice": 4,
+        "lengthcount": 1,
+        "roll": 3
+      },
+      {
+        "name": "Storm Clouds",
+        "effects": [
+          "[Severe Wind] -62°C",
+          "- Disadvantage on Ranged Attack Rolls",
+          "- Disadvantage on [Hearing] Perception Checks",
+          "No Natural Light: [Blinded]",
+          "- No [Sight] Perception Checks",
+          "- Disadvantage on Attack Rolls ",
+          "Extreme Cold for those without natural cold resistance.",
+          "- 1/Hr DC 10 CON Saving Throw: On Fail +1 Exhaustion"
+        ],
+        "calming1": "Overcast",
+        "calming2": "Overcast",
+        "worsening1": "Heavy Snowfall",
+        "worsening2": "Lightning Storm",
+        "lengthdice": 4,
+        "lengthcount": 1,
+        "roll": 4
+      },
+      {
+        "name": "Light Snow Dusting",
+        "effects": [
+          "[No Wind] -51°C",
+          "Dim Natural Light from: Moon / Aurora / Twilight",
+          "- Disadvantage on [Sight] Perception Checks"
+        ],
+        "calming1": "Light Cloud Coverage",
+        "calming2": "Light Cloud Coverage",
+        "worsening1": "Heavy Snowfall",
+        "worsening2": "Lightning Storm",
+        "lengthdice": 4,
+        "lengthcount": 1,
+        "roll": 5
+      },
+      {
+        "name": "Heavy Snowfall",
+        "effects": [
+          "[Mild Wind] -56°C",
+          "No Natural Light: [Blinded]",
+          "- No [Sight] Perception Checks ",
+          "- Disadvantage on Attack Rolls ",
+          "Extreme Cold for those without cold resistance.",
+          "- 1/Hr DC 10 CON Saving Throw: Fail +1 Exhaustion "
+        ],
+        "calming1": "Overcast",
+        "calming2": "Clear Skies",
+        "worsening1": "Blizzard",
+        "worsening2": "Hail Storm",
+        "lengthdice": 4,
+        "lengthcount": 1,
+        "roll": 6
+      },
+      {
+        "name": "Blizzard",
+        "effects": [
+          "[Moderate Wind] -68°C",
+          "- Disadvantage on Ranged Attack Rolls",
+          "- Disadvantage on [Hearing] Perception Checks",
+          "- - Hearing Range Reduced to 100ft",
+          "No Natural Light: [Blinded]",
+          "- No [Sight] Perception Checks",
+          "- - Characters without goggles are [Blinded] even in lit conditions.",
+          "- Disadvantage on Attack Rolls",
+          "- Visibility from Unnatural Lights Reduced to 30ft.",
+          "Extreme Cold for those with natural cold resistance.",
+          "- With Cold Resist: 1/Hr DC 10 CON Saving Throw: Fail +1 Exhaustion ",
+          "- 1/Hr DC 15 CON Saving Throw: Fail +1 Exhaustion",
+          "Extinguishing Winds: The severe wind makes open flames, fog, tracks in the snow, and non-magical flying impossible",
+          "If the party travels during a blizzard:",
+          "- Navigator must make a 1/Hr DC 15 Survival check.",
+          "- - On Fail 14-10: Party makes no progress toward destination.",
+          "- - On Fail 9 or lower: one random untied party member is lost.",
+          "- - Group DC 15 Survival Check 1/hr to find the lost member.",
+          "On turn end: Concentration Spells require DC 10 CON Saving Throw to maintain."
+        ],
+        "calming1": "Storm Clouds",
+        "calming2": "Light Snow Dusting",
+        "worsening1": "Heavy Snowfall",
+        "worsening2": "Wind Vortex",
+        "lengthdice": 4,
+        "lengthcount": 2,
+        "roll": 7
+      },
+      {
+        "name": "White Out",
+        "effects": [
+          "[Moderate Wind] -90°C",
+          "- Disadvantage on Ranged Attack Rolls",
+          "- Disadvantage on [Hearing] Perception Checks",
+          "- - Hearing Range Reduced to 30ft",
+          "No Natural Light: [Blinded]",
+          "- No [Sight] Perception Checks",
+          "- - Characters without goggles are [Blinded] even in lit conditions.",
+          "- Disadvantage on Attack Rolls",
+          "- Visibility from Unnatural Lights Reduced to 10ft.",
+          "Extreme Cold for those without cold resistance.",
+          "- 1/Hr DC 10 CON Saving Throw: Fail +1 Exhaustion",
+          "Extinguishing Winds: The severe wind makes open flames, fog, tracks in the snow, and non-magical flying impossible",
+          "If the party travels during a blizzard:",
+          "- Navigator must make a 1/Hr DC 18 Survival check.",
+          "- - On Fail 17-15: Party makes no progress toward destination.",
+          "- - On Fail 14-10: one random untied party member is lost.",
+          "- - On Fail 9 or lower: one random tied party member is lost.",
+          "- - Group DC 18 Survival Check 1/hr to find the lost member.",
+          "On turn end: Concentration Spells require DC 10 CON Saving Throw to maintain."
+        ],
+        "calming1": "Light Snow Dusting",
+        "calming2": "Light Snow Dusting",
+        "worsening1": "Heavy Snowfall",
+        "worsening2": "Blizzard",
+        "lengthdice": 4,
+        "lengthcount": 1,
+        "roll": 8
+      },
+      {
+        "name": "Extreme Fog",
+        "effects": [
+          "[No Wind] -48°C",
+          "Dim Natural Light from: Full Moon / Aurora / Twilight",
+          "- Disadvantage on [Sight] Perception Checks",
+          "- Visibility from Unnatural Lights Reduced to 5ft",
+          "If the party travels during the extreme fog:",
+          "- Navigator must make a 1/Hr DC 12 Survival check.",
+          "- - On Fail 11-8: Party makes no progress toward destination.",
+          "- - On Fail 7 or lower: one random untied party member is lost.",
+          "- - Group DC 12 Survival Check 1/hr to find the lost member."
+        ],
+        "calming1": "Clear Skies",
+        "calming2": "Overcast",
+        "worsening1": "Light Snow Dusting",
+        "worsening2": "Wind Vortex",
+        "lengthdice": 4,
+        "lengthcount": 1,
+        "roll": 9
+      },
+      {
+        "name": "Lightning Storm",
+        "effects": [
+          "[Mild Wind] -51°C",
+          "Dim Natural Light from: Rapid Lightning",
+          "- Disadvantage on [Sight] Perception Checks",
+          "Frightening Lightning / Thunderous Threat:",
+          "- 1/Hr Players caught in the open tundra must roll a d100.",
+          "- - On 001: The character must make a DC 15 DEX  saving throw. On Fail: 8d8 lightning damage / Half on a success.",
+          "- - In addition, each creature within 15ft of the striking point must also make a DC 15 DEX saving throw. On Fail: \u00bd  the full damage. Save: No Damage",
+          "- 1/Hr Booming Thunder has a 50% chance to cause an avalanche in the mountains.",
+          "- - Disadvantage on [Hearing] Perception Checks"
+        ],
+        "calming1": "Storm Clouds",
+        "calming2": "Storm Clouds",
+        "worsening1": "Blizzard",
+        "worsening2": "Heavy Snowfall",
+        "lengthdice": 4,
+        "lengthcount": 2,
+        "roll": 10
+      },
+      {
+        "name": "Hail Storm",
+        "effects": [
+          "[Severe Wind] -62°C",
+          "- Disadvantage on Ranged Attack Rolls",
+          "- Disadvantage on [Hearing] Perception Checks",
+          "No Natural Light: [Blinded]",
+          "- No [Sight] Perception Checks ",
+          "- Disadvantage on Attack Rolls",
+          "Extreme Cold for those without cold resistance.",
+          "- 1/Hr DC 10 CON Saving Throw: On Fail +1 Exhaustion",
+          "Icey Monstrosity:",
+          "- 1/Hr DC 10 DEX Saving Throw: Fail 1d12 Bludgeoning or half on a success."
+        ],
+        "calming1": "Overcast",
+        "calming2": "Clear Skies",
+        "worsening1": "Heavy Snowfall",
+        "worsening2": "Blizzard",
+        "lengthdice": 4,
+        "lengthcount": 1,
+        "roll": 11
+      },
+      {
+        "name": "Wind Vortex",
+        "effects": [
+          "[Severe Wind] -79°C",
+          "- Disadvantage on Ranged Attack Rolls ",
+          "- Disadvantage on [Hearing] Perception Checks",
+          "Dim Natural Light from: Moon / Aurora / Twilight",
+          "- Disadvantage on [Sight] Perception Checks",
+          "Extreme Cold for those with natural cold resistance.",
+          "- With Cold Resist: 1/Hr DC 10 CON Saving Throw: Fail +1 Exhaustion",
+          "- No Cold Resist: 1/Hr DC 15 CON Saving Throw: Fail +1 Exhaustion.",
+          "Extinguishing Winds: The severe wind makes open flames, fog, tracks in the snow, and non-magical flying impossible."
+        ],
+        "calming1": "Clear Skies",
+        "calming2": "Clear Skies",
+        "worsening1": "Clear Skies",
+        "worsening2": "Clear Skies",
+        "lengthdice": 4,
+        "lengthcount": 1,
+        "roll": 12
+      }
+    ]
+  }

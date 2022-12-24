@@ -21,17 +21,16 @@ int roll(int dice_count, int max_dice_value)
 
 Weather populate_weather_object(Weather current_weather_object, int weather_roll)
 {
-    string weather_roll_string = weather_roll.ToString();
 
-    current_weather_object.name = weather_data.weather[weather_roll_string].name;
-    current_weather_object.effects = weather_data.weather[weather_roll_string].effects;
-    current_weather_object.calming1 = weather_data.weather[weather_roll_string].calming1;
-    current_weather_object.calming2 = weather_data.weather[weather_roll_string].calming2;
-    current_weather_object.worsening1 = weather_data.weather[weather_roll_string].worsening1;
-    current_weather_object.worsening2 = weather_data.weather[weather_roll_string].worsening2;
-    current_weather_object.roll = weather_data.weather[weather_roll_string].roll;
-    current_weather_object.length_dice = weather_data.weather[weather_roll_string].lengthdice;
-    current_weather_object.length_dice_count = weather_data.weather[weather_roll_string].lengthcount;
+    current_weather_object.name = weather_data.weather[weather_roll - 1].name;
+    current_weather_object.effects = weather_data.weather[weather_roll - 1].effects;
+    current_weather_object.calming1 = weather_data.weather[weather_roll - 1].calming1;
+    current_weather_object.calming2 = weather_data.weather[weather_roll - 1].calming2;
+    current_weather_object.worsening1 = weather_data.weather[weather_roll - 1].worsening1;
+    current_weather_object.worsening2 = weather_data.weather[weather_roll - 1].worsening2;
+    current_weather_object.roll = weather_data.weather[weather_roll - 1].roll;
+    current_weather_object.length_dice = weather_data.weather[weather_roll - 1].lengthdice;
+    current_weather_object.length_dice_count = weather_data.weather[weather_roll - 1].lengthcount;
     current_weather_object.duration = roll(current_weather_object.length_dice_count, current_weather_object.length_dice);
 
     return current_weather_object;
@@ -88,16 +87,11 @@ string weather_status()
 Weather next_weather(Weather weather)
 {
     string status = weather_status();
-    object temp1 = weather.GetType().GetProperty(status).GetValue(weather);
-    string next_weather_name = temp1.ToString();
-
-    string json_string = weather_data.weather.ToString();
-    var jsonData = JObject.Parse(json_string).Children();
-    List<JToken> tokens = jsonData.Children().ToList();
+    string next_weather_name = weather.GetType().GetProperty(status).GetValue(weather).ToString();
 
     Weather new_weather = new Weather();
 
-    foreach (JToken token in tokens)
+    foreach (var token in weather_data.weather)
     {
         if (next_weather_name.Equals(token["name"].ToString()))
         {
@@ -109,19 +103,29 @@ Weather next_weather(Weather weather)
     return new_weather;
 }
 
-void print_weather(Weather weather)
+void print_weather(Weather weather, bool effects, bool clock)
 {
-    Console.WriteLine($"Weather Name: {weather.name}");
+    Console.WriteLine($"{weather.name}");
     Console.WriteLine($"Duration: {weather.duration.ToString()} hours");
+
+    if(clock)
+    {
+        Console.WriteLine($"{weather.start_time}:00 - {weather.end_time}:00");
+    }
     Console.WriteLine("------------");
 
-    foreach (String effect in weather.effects)
+    if (effects)
     {
-        Console.WriteLine(effect);
+        Console.WriteLine("Effects: ");
+        foreach (var effect in weather.effects)
+        {
+            Console.WriteLine(effect);
+        }
     }
     
+
     Console.WriteLine();
-    Console.WriteLine("===================================");
+    Console.WriteLine("===================================");  
 
 }
 
@@ -131,13 +135,88 @@ void weather_sample()
     Weather another_weather = next_weather(starting_weather);
     Weather another_one = next_weather(another_weather);
 
-    print_weather(starting_weather);
-    print_weather(another_weather);
-    print_weather(another_one);
+    print_weather(starting_weather, false, false);
+    print_weather(another_weather, false, false);
+    print_weather(another_one, false, false);
 }
 
+List<Weather> calculate_day(int day_length)
+{
+    int hour_tracker = 0;
+    List<Weather> weather_list = new List<Weather>();
 
-weather_sample();
+    Weather starting_weather = long_rest();
+    weather_list.Add(starting_weather);
+    hour_tracker = hour_tracker + starting_weather.duration;
+
+    Weather new_weather = next_weather(starting_weather);
+    weather_list.Add(new_weather);
+    hour_tracker = hour_tracker + new_weather.duration;
+
+    while (hour_tracker < day_length)
+    {
+        new_weather = next_weather(new_weather);
+
+        if ((new_weather.duration + hour_tracker) > day_length)
+        {
+            int remainder_duration = day_length - hour_tracker;
+            new_weather.duration = remainder_duration;
+        }
+        else if (hour_tracker == day_length) {
+            break;
+        }
+
+        weather_list.Add(new_weather);
+        hour_tracker = hour_tracker + new_weather.duration;
+    }
+    return weather_list;
+}
+
+List<Weather> populate_times(List<Weather> weather_list, int current_time, int day_length)
+{
+    weather_list[0].start_time = current_time;
+
+    if ((current_time + weather_list[0].duration) >= day_length)
+    {
+        weather_list[0].end_time = (weather_list[0].duration - (day_length - current_time));
+        current_time = weather_list[0].end_time;
+    }
+    else
+    {
+        weather_list[0].end_time = current_time + weather_list[0].duration;
+        current_time = weather_list[0].end_time;
+    }
+
+    for (int i = 0; i < weather_list.Count; i++)
+    {
+        if (i != 0)
+        {
+            if ((current_time + weather_list[i].duration) >= day_length)
+            {
+                weather_list[i].start_time = weather_list[i - 1].end_time;
+                weather_list[i].end_time = (weather_list[i].duration - (day_length - current_time));
+                current_time = weather_list[i].end_time;
+            }
+            else
+            {
+                weather_list[i].start_time = weather_list[i - 1].end_time;
+                weather_list[i].end_time = current_time + weather_list[i].duration;
+                current_time = weather_list[i].end_time;
+            }
+        }
+    }
+
+    return weather_list;
+}
+
+List<Weather> todays_weather = calculate_day(24);
+todays_weather = populate_times(todays_weather, 9, 24);
+
+foreach(var x in todays_weather) {
+    Console.WriteLine("------------");
+    print_weather(x, true, true);
+    Console.WriteLine("");
+}
 
 Console.ReadLine();
 
